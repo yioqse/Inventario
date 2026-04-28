@@ -38,4 +38,4 @@ Garantiza que el código es estable y compatible a través de múltiples version
 
 # Captura pantalla Actions pipeline CI/CD
 
-![Captura pantalla Actions pipeline CI/CD en verde](images/captura_ci.png)
+![Captura del pipeline en verde](images/captura_ci.png)
