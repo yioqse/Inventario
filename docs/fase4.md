@@ -23,7 +23,7 @@ pytest-mock para historial de ventas. Verificar ValueError con
 historial vacío
 Alumno/a
 13 test: test_full_pipeline.py —
-integración [ai]
+integración [ai] ✅ [COMPLETADO]
 Test de integración end-to-end: detect_products → predict →
 recommend. Verifica que la cadena completa no lanza
 excepciones

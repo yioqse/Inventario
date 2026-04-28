@@ -57,3 +57,23 @@ Este documento describe los tests implementados en el proyecto.
 - Ejecuta una prueba de tipo End-to-End (`e2e`). 
 - Flujo: Arranca un escaneo desde la capa de visión (`detect_products`), cruza con la base de datos para recuperar históricos, analiza y predice posibles cortes de inventario (`predict_stock_outage`), y por último, inyecta las deficiencias al motor de recomendación (`generate_recommendations`).
 - Garantiza estructuralmente que un cambio aislado en uno de los micro-servicios no rompa la estructura de datos que recibe el subsiguiente.
+
+## Comandos de Ejecución
+
+Para ejecutar la batería de pruebas, utiliza los siguientes comandos desde la raíz del proyecto:
+
+**Ejecutar todos los tests:**
+```bash
+pytest tests/
+```
+
+**Ejecutar tests con reporte de cobertura (Coverage):**
+```bash
+coverage run --source=services -m pytest tests/
+coverage report -m
+```
+
+**Ejecutar específicamente el test de Integración (End-to-End):**
+```bash
+pytest tests/integration/test_full_pipeline.py
+```
