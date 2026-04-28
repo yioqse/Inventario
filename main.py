@@ -17,6 +17,10 @@ def home():
     return render_template('index.html')
 
 if __name__ == '__main__':
+    # Configurar stdout para soportar UTF-8 en Windows, o quitar emojis
+    import sys
+    sys.stdout.reconfigure(encoding='utf-8')
+    
     print("=" * 60)
     print("📦 SISTEMA DE INVENTARIO INTELIGENTE - REFACTORIZADO")
     print("=" * 60)

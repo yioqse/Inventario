@@ -25,8 +25,21 @@
         </div>
         
         <div class="row">
-            <!-- Panel izquierdo: Botones de API -->
+            <!-- Panel izquierdo: Botones -->
             <div class="col-md-4 mb-4">
+                <!-- Panel de Control Original -->
+                <div class="card mb-3">
+                    <div class="card-header"><h5 class="mb-0">📊 Panel de Control</h5></div>
+                    <div class="card-body">
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary" onclick="location.href='/'">🏠 Inicio</button>
+                            <button class="btn btn-success" onclick="analizarInventario()">🔍 Analizar Inventario</button>
+                            <button class="btn btn-info" onclick="verProductos()">📦 Ver Productos</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panel de Endpoints de API -->
                 <div class="card">
                     <div class="card-header">
                         <h5 class="mb-0">🔌 Endpoints de la API</h5>
@@ -47,12 +60,6 @@
                             </button>
                             <button class="btn btn-secondary btn-api" onclick="callAPI('/api/recomendaciones')">
                                 <i class="fas fa-lightbulb"></i> GET /api/recomendaciones
-                            </button>
-                        </div>
-                        <hr>
-                        <div class="d-grid gap-2">
-                            <button class="btn btn-outline-primary" onclick="location.href='/'">
-                                <i class="fas fa-home"></i> Inicio
                             </button>
                         </div>
                     </div>
@@ -83,6 +90,21 @@
             
             <!-- Panel derecho: Resultados -->
             <div class="col-md-8">
+                <!-- Panel Principal (Visual) -->
+                <div class="card mb-4">
+                    <div class="card-header"><h5 class="mb-0">Panel Principal</h5></div>
+                    <div class="card-body">
+                        <div id="loading-main" class="loading"><div class="spinner-border text-primary"></div><p>Procesando...</p></div>
+                        <div id="content">
+                            <div class="text-center">
+                                <i class="fas fa-robot" style="font-size: 4em; color: #667eea;"></i>
+                                <h3>Bienvenido</h3>
+                                <p>Haz clic en "Analizar Inventario" para comenzar</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="card">
                     <div class="card-header">
                         <h5 class="mb-0">📊 Respuesta de la API</h5>
@@ -125,11 +147,48 @@
         
         // Función para analizar inventario y mostrar en formato amigable
         function analizarInventario() {
-            callAPI('/api/analizar-inventario');
+            document.getElementById('loading-main').style.display = 'block';
+            document.getElementById('content').innerHTML = '<p class="text-center">🔍 Analizando inventario...</p>';
+            fetch('/api/analizar-inventario')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('loading-main').style.display = 'none';
+                    let html = '<div class="alert alert-success">✅ Análisis completado (' + data.deteccion.descripcion + ')</div>';
+                    if (data.resumen) {
+                        html += '<div class="row mb-4">' +
+                            '<div class="col-md-4"><div class="stat-card bg-primary"><i class="fas fa-boxes"></i><h3>' + data.resumen.total_productos + '</h3><p>Productos Analizados</p></div></div>' +
+                            '<div class="col-md-4"><div class="stat-card bg-danger"><i class="fas fa-exclamation-triangle"></i><h3>' + (data.resumen.productos_criticos || 0) + '</h3><p>Productos Críticos</p></div></div>' +
+                            '<div class="col-md-4"><div class="stat-card bg-success"><i class="fas fa-dollar-sign"></i><h3>$' + (data.valor_inventario || 0) + '</h3><p>Valor Inventario</p></div></div>' +
+                            '</div>';
+                    }
+                    if (data.productos && data.productos.length > 0) {
+                        html += '<h5>📋 Detalle de Productos</h5><div class="table-responsive"><table class="table table-striped"><thead><tr><th>Producto</th><th>Stock</th><th>Días hasta agotarse</th><th>Estado</th></tr></thead><tbody>';
+                        for (let p of data.productos) {
+                            html += `<tr><td>${p.producto}</td><td>${p.stock_actual}</td><td>${p.prediccion?.dias_hasta_agotarse || 'N/A'}</td><td>${p.prediccion?.estado || 'Desconocido'}</td></tr>`;
+                        }
+                        html += '</tbody></table></div>';
+                    }
+                    document.getElementById('content').innerHTML = html;
+                })
+                .catch(error => {
+                    document.getElementById('loading-main').style.display = 'none';
+                    document.getElementById('content').innerHTML = '<div class="alert alert-danger">Error: ' + error + '</div>';
+                });
         }
         
         function verProductos() {
-            callAPI('/api/productos');
+            document.getElementById('loading-main').style.display = 'block';
+            fetch('/api/productos')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('loading-main').style.display = 'none';
+                    if (data.productos) {
+                        let html = '<h5>📦 Catálogo de Productos</h5><table class="table"><thead><tr><th>Nombre</th><th>Categoría</th><th>Precio</th></tr></thead><tbody>';
+                        for (let p of data.productos) html += `<tr><td>${p.nombre}</td><td>${p.categoria}</td><td>$${p.precio}</td></tr>`;
+                        html += '</tbody></table>';
+                        document.getElementById('content').innerHTML = html;
+                    }
+                });
         }
     </script>
 </body>

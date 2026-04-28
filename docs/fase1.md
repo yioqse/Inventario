@@ -73,3 +73,7 @@ generate_recommendations()
 +-- requirements.txt
 +-- .gitignore # **pycache**, .venv, \*.pyc
 +-- README.md # Instalación, uso, sección IA, badge CI
+
+commit2: .gitignore, estructura y refactorizacion
+pero no funciona main
+modifico el main y el html
