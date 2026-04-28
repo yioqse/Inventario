@@ -1,10 +1,15 @@
 from typing import List, Dict, Any
 from services.database.product_db import product_database
-from services.inventory.recommender import generate_recommendations
 
 def count_by_status(detected_products: List[Dict[str, Any]]) -> Dict[str, Any]:
-    """
-    Calcula métricas de inventario (críticos, bajos, adecuados) basado en productos detectados.
+    """Calcula métricas de inventario (críticos, bajos, adecuados) basado en productos detectados.
+
+    Args:
+        detected_products (List[Dict[str, Any]]): Lista de productos detectados por visión.
+
+    Returns:
+        Dict[str, Any]: Un diccionario con el recuento total y listas de productos 
+        clasificados por su estado de stock (crítico, bajo, adecuado).
     """
     total_products = len(detected_products)
     total_units = sum(p["cantidad"] for p in detected_products)
@@ -25,7 +30,7 @@ def count_by_status(detected_products: List[Dict[str, Any]]) -> Dict[str, Any]:
             elif current_stock < min_stock:
                 low_stock_products.append({"producto": product_name, "stock_actual": current_stock, "stock_minimo": min_stock, "estado": "BAJO ⚠️"})
             else:
-                adequate_products.append({"producto": product_name, "stock_actual": current_stock, "stock_minimo": min_stock, "estado": "ADEQUADO ✅"})
+                adequate_products.append({"producto": product_name, "stock_actual": current_stock, "stock_minimo": min_stock, "estado": "ADECUADO ✅"})
     
     return {
         "resumen": {
@@ -35,5 +40,9 @@ def count_by_status(detected_products: List[Dict[str, Any]]) -> Dict[str, Any]:
             "productos_bajos": len(low_stock_products),
             "productos_adecuados": len(adequate_products),
         },
-        "recomendaciones": generate_recommendations(critical_products + low_stock_products)
+        "detalles": {
+            "criticos": critical_products,
+            "bajos": low_stock_products,
+            "adecuados": adequate_products
+        }
     }

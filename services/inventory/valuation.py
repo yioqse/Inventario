@@ -2,8 +2,14 @@ from typing import List, Dict, Any
 from services.database.product_db import product_database
 
 def calculate_inventory_value(detected_products: List[Dict[str, Any]]) -> float:
-    """
-    Calcula el valor total del inventario basándose en los productos detectados.
+    """Calcula el valor monetario total del inventario basándose en los productos detectados.
+
+    Args:
+        detected_products (List[Dict[str, Any]]): Lista de productos detectados.
+
+    Returns:
+        float: El valor total del inventario, calculado como cantidad * precio, 
+        redondeado a 2 decimales.
     """
     total_value = 0.0
     for detected in detected_products:
