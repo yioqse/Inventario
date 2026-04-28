@@ -12,9 +12,9 @@ def test_count_by_status_all_states():
     """
     # Arrange
     detected_products = [
-        {"nombre": "Leche", "cantidad": 0},      # Crítico (Agotado)
-        {"nombre": "Huevos", "cantidad": 2},     # Bajo (min_stock = 3)
-        {"nombre": "Yogur", "cantidad": 20}      # Adecuado (min_stock = 8)
+        {"nombre": "Leche Entera", "cantidad": 0},      # Crítico (Agotado)
+        {"nombre": "Huevos M", "cantidad": 2},     # Bajo (min_stock = 3)
+        {"nombre": "Yogur Natural", "cantidad": 20}      # Adecuado (min_stock = 8)
     ]
     
     # Act

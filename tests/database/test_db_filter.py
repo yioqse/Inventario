@@ -2,7 +2,7 @@ from services.database.db_filter import get_sales_history, get_by_category
 
 def test_get_sales_history_valid():
     """Verifica que se devuelva el historial de ventas para un producto válido."""
-    history = get_sales_history("Leche", days=5)
+    history = get_sales_history("Leche Entera", days=5)
     assert isinstance(history, list)
     assert len(history) == 5
 

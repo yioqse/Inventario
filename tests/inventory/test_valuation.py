@@ -12,8 +12,8 @@ def test_calculate_inventory_value_correct():
     """
     # Arrange
     detected_products = [
-        {"nombre": "Leche", "cantidad": 10},   # precio 1.20 -> 12.0
-        {"nombre": "Huevos", "cantidad": 2}    # precio 2.50 -> 5.0
+        {"nombre": "Leche Entera", "cantidad": 10},   # precio 1.20 -> 12.0
+        {"nombre": "Huevos M", "cantidad": 2}    # precio 2.50 -> 5.0
     ]
     
     # Act

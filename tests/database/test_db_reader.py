@@ -2,9 +2,9 @@ from services.database.db_reader import get_product_info, get_all_products
 
 def test_get_product_info_valid():
     """Verifica que get_product_info devuelve información correcta para un producto existente."""
-    product = get_product_info("Leche")
+    product = get_product_info("Leche Entera")
     assert product is not None
-    assert product["nombre"] == "Leche"
+    assert product["nombre"] == "Leche Entera"
     assert product["categoria"] == "Refrigerados"
 
 def test_get_product_info_invalid():
