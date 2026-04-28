@@ -34,7 +34,11 @@ def analizar_inventario():
         
         if producto_info:
             historial_ventas = get_sales_history(nombre, days=30)
-            prediccion = predict_stock_outage(historial_ventas, stock_actual, producto_info)
+            try:
+                prediccion = predict_stock_outage(historial_ventas, stock_actual, producto_info)
+            except ValueError:
+                prediccion = {"dias_hasta_agotarse": "N/A", "estado": "SIN HISTORIAL ⚠️", "cantidad_recomendada": 10}
+                
             productos_analizados.append({
                 "producto": nombre,
                 "stock_actual": stock_actual,
