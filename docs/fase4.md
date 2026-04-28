@@ -12,7 +12,7 @@ test_detector.py, test_scenario_loader.py. Mock de
 random.choice(). Verificar estructura del escenario. Edge
 case: lista vacía
 Alumno/a
-11 test: tests de inventory/ [ai]
+11 test: tests de inventory/ [ai] ✅ [COMPLETADO]
 test_metrics.py, test_valuation.py, test_recommender.py.
 Cubrir estado crítico, bajo, normal. Lista vacía. Producto no
 encontrado en BD

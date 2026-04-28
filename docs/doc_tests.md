@@ -24,3 +24,18 @@ Este documento describe los tests implementados en el proyecto.
 
 ### `test_detector.py`
 - **`test_detect_products_mocked`**: Comprueba el funcionamiento de la orquestación. Usa un *mock* (`unittest.mock.patch`) en `random.choice` para inyectar un escenario controlado y asegurar que el sistema procesa correctamente diccionarios con la clave `productos` y que las listas no vengan vacías.
+
+## Capa de Inventario (`tests/inventory/`)
+
+### `test_metrics.py`
+- Verifica el conteo exacto de productos en estado CRÍTICO, BAJO y ADECUADO, validando su correspondencia con la base de datos real.
+- Asegura que al proveer una lista vacía, el sistema devuelva de forma segura todos los contadores a `0`.
+
+### `test_valuation.py`
+- Valida que el sumatorio del inventario sea correcto matemáticamente (`precio x stock`).
+- Comprueba que los productos enviados por visión que no existen en la BD devuelvan un valor de `0` sin lanzar excepciones.
+- Asegura que procesar una lista de visión vacía devuelva `0.0`.
+
+### `test_recommender.py`
+- Verifica que el sistema etiquete como prioridad `ALTA` (Urgente) a un producto si su stock enviado es igual a `0`.
+- Verifica que devuelva prioridad `MEDIA` si el stock es inferior al mínimo pero mayor que `0`.
