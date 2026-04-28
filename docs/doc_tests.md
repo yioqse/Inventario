@@ -39,3 +39,21 @@ Este documento describe los tests implementados en el proyecto.
 ### `test_recommender.py`
 - Verifica que el sistema etiquete como prioridad `ALTA` (Urgente) a un producto si su stock enviado es igual a `0`.
 - Verifica que devuelva prioridad `MEDIA` si el stock es inferior al mínimo pero mayor que `0`.
+
+## Capa de Predicción (`tests/prediction/`)
+
+### `test_demand_analyzer.py`
+- Verifica el cálculo de consumo promedio con listas válidas de historial.
+- Comprueba que un historial de un único elemento no rompa el cálculo.
+- Asegura que al proveer una lista vacía, se propague el correspondiente `ValueError` por falta de datos.
+
+### `test_stock_predictor.py`
+- **`test_predict_stock_outage_mock_demand`**: Valida que el clasificador de estado por rangos de días funcione. Utiliza `unittest.mock.patch` en la función `calculate_daily_demand` para simular un consumo fijo (2 unidades) y predecir correctamente cuántos días faltan para agotarse y qué estado asignar.
+- Verifica que pasar una lista vacía para un producto con stock levante un `ValueError`.
+
+## Integración (`tests/integration/`)
+
+### `test_full_pipeline.py`
+- Ejecuta una prueba de tipo End-to-End (`e2e`). 
+- Flujo: Arranca un escaneo desde la capa de visión (`detect_products`), cruza con la base de datos para recuperar históricos, analiza y predice posibles cortes de inventario (`predict_stock_outage`), y por último, inyecta las deficiencias al motor de recomendación (`generate_recommendations`).
+- Garantiza estructuralmente que un cambio aislado en uno de los micro-servicios no rompa la estructura de datos que recibe el subsiguiente.

@@ -17,7 +17,7 @@ test_metrics.py, test_valuation.py, test_recommender.py.
 Cubrir estado crítico, bajo, normal. Lista vacía. Producto no
 encontrado en BD
 Alumno/a
-12 test: tests de prediction/ [ai]
+12 test: tests de prediction/ [ai] ✅ [COMPLETADO]
 test_demand_analyzer.py, test_stock_predictor.py.
 pytest-mock para historial de ventas. Verificar ValueError con
 historial vacío
