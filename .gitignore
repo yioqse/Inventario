@@ -1,0 +1,53 @@
+# ========================
+# Entornos virtuales
+# ========================
+.venv/
+venv/
+env/
+ENV/
+
+# ========================
+# Caché y compilados de Python
+# ========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# ========================
+# Entorno y variables sensibles
+# ========================
+.env
+.env.local
+.env.*
+*.secret
+
+# ========================
+# Archivos del sistema y SO
+# ========================
+.DS_Store
+Thumbs.db
+
+# ========================
+# Testing (pytest y coverage)
+# ========================
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# ========================
+# IDEs y Editores de código
+# ========================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ========================
+# Logs y bases de datos locales
+# ========================
+*.log
+instance/
+*.sqlite3
+*.db
