@@ -3,7 +3,7 @@ FASE 3 — Capa de servicios (vision, inventory, prediction)
 # Commit Qué debe contener Tarea
 
 05 feat: scenario_loader.py y
-detector.py [ai]
+detector.py [ai] ✅ [COMPLETADO]
 \_load_scenarios() en scenario_loader.py (solo datos).
 detect_products() en detector.py (solo orquestación). Type
 hints. Docstrings

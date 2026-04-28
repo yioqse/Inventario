@@ -1,8 +1,12 @@
 from typing import List, Dict, Any
 
 def _load_scenarios() -> List[Dict[str, Any]]:
-    """
-    Carga los escenarios posibles de detección visual.
+    """Carga los escenarios posibles de detección visual.
+
+    Returns:
+        List[Dict[str, Any]]: Una lista de escenarios predefinidos. Cada escenario
+        es un diccionario que contiene una 'descripcion' y una lista de 'productos'
+        detectados con sus cantidades y niveles de confianza.
     """
     return [
         {"descripcion": "Estantería de supermercado - Stock moderado", "productos": [
@@ -10,20 +14,20 @@ def _load_scenarios() -> List[Dict[str, Any]]:
             {"nombre": "Huevos", "cantidad": 5, "confianza": 0.88},
             {"nombre": "Pan", "cantidad": 3, "confianza": 0.85},
             {"nombre": "Agua", "cantidad": 12, "confianza": 0.95},
-            {"nombre": "Café", "cantidad": 6, "confianza": 0.90}
+            {"nombre": "Refresco", "cantidad": 6, "confianza": 0.90}
         ]},
         {"descripcion": "Almacén de tienda - Stock alto", "productos": [
             {"nombre": "Arroz", "cantidad": 25, "confianza": 0.94},
             {"nombre": "Leche", "cantidad": 18, "confianza": 0.91},
             {"nombre": "Huevos", "cantidad": 22, "confianza": 0.89},
             {"nombre": "Agua", "cantidad": 30, "confianza": 0.96},
-            {"nombre": "Café", "cantidad": 15, "confianza": 0.87}
+            {"nombre": "Pasta", "cantidad": 15, "confianza": 0.87}
         ]},
         {"descripcion": "Nevera comercial - Stock bajo", "productos": [
             {"nombre": "Yogur", "cantidad": 4, "confianza": 0.83},
             {"nombre": "Queso", "cantidad": 2, "confianza": 0.80},
             {"nombre": "Mantequilla", "cantidad": 3, "confianza": 0.82},
             {"nombre": "Zumo", "cantidad": 5, "confianza": 0.86},
-            {"nombre": "Fiambre", "cantidad": 1, "confianza": 0.78}
+            {"nombre": "Atún", "cantidad": 1, "confianza": 0.78}
         ]}
     ]
