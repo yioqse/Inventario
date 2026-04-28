@@ -7,7 +7,7 @@ test_product_db.py, test_db_reader.py, test_db_filter.py.
 Cubrir valores válidos, inválidos, lista vacía, filtro por
 categoría
 Alumno/a
-10 test: tests de vision/ [ai]
+10 test: tests de vision/ [ai] ✅ [COMPLETADO]
 test_detector.py, test_scenario_loader.py. Mock de
 random.choice(). Verificar estructura del escenario. Edge
 case: lista vacía
