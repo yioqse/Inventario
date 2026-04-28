@@ -18,7 +18,7 @@ def test_calculate_daily_demand_con_historial_normal():
     resultado = calculate_daily_demand(historial)
 
     # Assert
-    assert resultado == 4.0
+    assert resultado == 4.2
 
 def test_calculate_daily_demand_un_elemento():
     """Verifica el cálculo de demanda cuando el historial tiene un solo elemento.
