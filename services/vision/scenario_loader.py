@@ -10,24 +10,24 @@ def _load_scenarios() -> List[Dict[str, Any]]:
     """
     return [
         {"descripcion": "Estantería de supermercado - Stock moderado", "productos": [
-            {"nombre": "Leche", "cantidad": 8, "confianza": 0.92},
-            {"nombre": "Huevos", "cantidad": 5, "confianza": 0.88},
-            {"nombre": "Pan", "cantidad": 3, "confianza": 0.85},
-            {"nombre": "Agua", "cantidad": 12, "confianza": 0.95},
-            {"nombre": "Refresco", "cantidad": 6, "confianza": 0.90}
+            {"nombre": "Leche Entera", "cantidad": 8, "confianza": 0.92},
+            {"nombre": "Huevos M", "cantidad": 5, "confianza": 0.88},
+            {"nombre": "Pan de Molde", "cantidad": 12, "confianza": 0.85},
+            {"nombre": "Agua Mineral", "cantidad": 15, "confianza": 0.95},
+            {"nombre": "Refresco Cola", "cantidad": 6, "confianza": 0.90}
         ]},
         {"descripcion": "Almacén de tienda - Stock alto", "productos": [
             {"nombre": "Arroz", "cantidad": 25, "confianza": 0.94},
-            {"nombre": "Leche", "cantidad": 18, "confianza": 0.91},
-            {"nombre": "Huevos", "cantidad": 22, "confianza": 0.89},
-            {"nombre": "Agua", "cantidad": 30, "confianza": 0.96},
-            {"nombre": "Pasta", "cantidad": 15, "confianza": 0.87}
+            {"nombre": "Leche Entera", "cantidad": 18, "confianza": 0.91},
+            {"nombre": "Huevos M", "cantidad": 22, "confianza": 0.89},
+            {"nombre": "Agua Mineral", "cantidad": 30, "confianza": 0.96},
+            {"nombre": "Harina de Trigo", "cantidad": 15, "confianza": 0.87}
         ]},
         {"descripcion": "Nevera comercial - Stock bajo", "productos": [
-            {"nombre": "Yogur", "cantidad": 4, "confianza": 0.83},
-            {"nombre": "Queso", "cantidad": 2, "confianza": 0.80},
+            {"nombre": "Yogur Natural", "cantidad": 4, "confianza": 0.83},
+            {"nombre": "Queso Fresco", "cantidad": 2, "confianza": 0.80},
             {"nombre": "Mantequilla", "cantidad": 3, "confianza": 0.82},
-            {"nombre": "Zumo", "cantidad": 5, "confianza": 0.86},
-            {"nombre": "Atún", "cantidad": 1, "confianza": 0.78}
+            {"nombre": "Zumo de Naranja UHT", "cantidad": 5, "confianza": 0.86},
+            {"nombre": "Atún en Aceite", "cantidad": 1, "confianza": 0.78}
         ]}
     ]
